@@ -1,0 +1,26 @@
+
+
+.navbar{
+    color: var(--text);
+    background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .6rem;
+}
+.navbar > h2 {
+    cursor: pointer;
+    color: black;
+    padding: 0.4rem;
+    border-radius: .2rem;
+}
+
+.navbar > div { 
+    cursor: pointer;
+    font-size: large;
+    color: black;
+}
+a {
+    text-decoration: none;
+    color: initial;
+}
