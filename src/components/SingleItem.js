@@ -3,7 +3,7 @@ import styles from './SingleItem.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItemToCart, addTotalItemsToCart, selectCart } from '../features/cart/cartSlice'
 
-const SingleItem = ({title, image, description, price}) => {
+const SingleItem = ({id, title, image, description, price}) => {
     let count = 0;
     const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ const SingleItem = ({title, image, description, price}) => {
 
     const myDispatches = () => {
         dispatch(addItemToCart(
-            {
+            {   id: id,
                 title: title,
                 image: image,
                 description: description,

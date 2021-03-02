@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch} from "react-redux";
+import { removeItemFromCart } from "../features/cart/cartSlice";
 import styles from "./CartItem.module.css";
 
 
-const CartItem = ({title, image, description, price}) => {
- 
+const CartItem = ({id, title, image, description, price}) => {
+    const [qty, setQty] = useState(1);
+    const dispatch = useDispatch();
+    
+  const deleteFunc = () => {
+      dispatch(removeItemFromCart(id))
+  }
 
   return (
     <div className={styles.cartItem}>
@@ -25,11 +32,13 @@ const CartItem = ({title, image, description, price}) => {
             type="number"
             id="qty"
             name="qty"
-            value="1"
+            value={qty}
+            onChange={(e)=> setQty(e.target.value)}
           />
         </div>
         <button
           className={styles.actions__deleteItemBtn}
+          onClick={deleteFunc}
         >
           <img
             src="https://image.flaticon.com/icons/svg/709/709519.svg"

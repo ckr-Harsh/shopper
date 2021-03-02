@@ -8,7 +8,7 @@ const HomePage = () => {
         <div className={styles.homepage}>
             {
                 datas.map(data => {
-                    return <SingleItem key={data.id} image={data.image}
+                    return <SingleItem key={data.id} id={data.id} image={data.image}
                                         title={data.title} description={data.description} price={data.price}/>
                 })
             }
