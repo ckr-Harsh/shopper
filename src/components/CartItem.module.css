@@ -76,3 +76,12 @@
     width: 25px;
     height: 25px;
   }
+
+  @media (max-width: 500px) {
+    .cartItem {
+      flex-direction: column;
+    }
+    .cartItem__qty{
+      padding-bottom: 1rem;
+    }
+  }

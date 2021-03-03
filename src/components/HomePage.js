@@ -9,7 +9,7 @@ const HomePage = () => {
             {
                 datas.map(data => {
                     return <SingleItem key={data.id} id={data.id} image={data.image}
-                                        title={data.title} description={data.description} price={data.price}/>
+                                        title={data.title} description={data.description} price={data.price} qty={data.qty}/>
                 })
             }
         </div>

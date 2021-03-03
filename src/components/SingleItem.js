@@ -1,17 +1,11 @@
 import React from 'react'
 import styles from './SingleItem.module.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { addItemToCart, addTotalItemsToCart, selectCart } from '../features/cart/cartSlice'
+import { useDispatch } from 'react-redux'
+import { addItemToCart, adjustQty } from '../features/cart/cartSlice'
 
-const SingleItem = ({id, title, image, description, price}) => {
-    let count = 0;
+const SingleItem = ({id, title, image, description, price, qty}) => {
+
     const dispatch = useDispatch();
-
-    const cartData = useSelector(selectCart);
-
-    for (let i = 0; i <= cartData.length; i++) {
-        count++;
-    }
 
     const myDispatches = () => {
         dispatch(addItemToCart(
@@ -19,19 +13,20 @@ const SingleItem = ({id, title, image, description, price}) => {
                 title: title,
                 image: image,
                 description: description,
-                price: price
+                price: price,
+                qty: qty
              }
         ))
 
-        dispatch(addTotalItemsToCart(count));
+        dispatch(adjustQty(id));
     }
 
     return (
         <div className={styles.singleItem}>
             <img src={image} alt={title}/>
             <p>{title}</p>
-            <p>{description}</p>
-            <p>price: {price}</p>
+            <p className={styles.desc}>{description}</p>
+            <p className={styles.price}>price:  ₹{price}</p>
             <br/>
             <button onClick={myDispatches}>Add To Cart</button>
         </div> 

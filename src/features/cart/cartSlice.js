@@ -4,7 +4,6 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     items: [],
-    totalItems: 0
   },
   reducers: {
     addItemToCart: (state, action) => {
@@ -13,15 +12,16 @@ export const cartSlice = createSlice({
     removeItemFromCart: (state, action) => {
       state.items = state.items.filter(filtered => filtered.id !== action.payload)
     },
-    addTotalItemsToCart: (state, action) => {
-      state.totalItems = action.payload;
+    adjustQty: (state, action) => {
+      state.items = state.items.map(item => item.id === action.payload.id
+        ? { ...item, qty: +action.payload.qty }
+        : item )  
     },
   },
 });
 
-export const { addItemToCart, removeItemFromCart, addTotalItemsToCart } = cartSlice.actions;
+export const { addItemToCart, removeItemFromCart, adjustQty } = cartSlice.actions;
 
 export const selectCart = state => state.cart.items;
-export const selectTotalItems = state => state.cart.totalItems;
 
 export default cartSlice.reducer;

@@ -15,11 +15,6 @@
     border-radius: .2rem;
 }
 
-.navbar > div { 
-    cursor: pointer;
-    font-size: large;
-    color: black;
-}
 a {
     text-decoration: none;
     color: initial;
